@@ -1,0 +1,28 @@
+# MERGER SORT: Keep dividing list and sorting then combine the several small list to make one big sorted list
+
+def merge_sort(B):                                # Our main function definiton 
+    merge_sort2(B,0,len(B)-1)                     # sub-function call
+
+def merge_sort2 (B,first,last):                   # subfunction definition
+    if first==last:
+        return B
+    else:
+        middle = (first+last)//2                  # means floor the div result
+        x=merge_sort2(B,first,middle)             # call to another sub-function                
+        y=merge_sort2(B,middle+1, last)
+        merge(B,first,middle,last)
+
+
+def merge(B,first,middle,last):                   # sub-function defnition
+    L= B [first:middle]
+    R= B [middle:last+1]
+    L.append(99999999)
+    R.append(99999999)
+    i=j=0
+    for k in range (first,last+1):
+        if L[i] <= R[j]:
+            B[k] =L[i]
+            i+=1
+        else:
+            B[k] =R[j]
+            j += 1
